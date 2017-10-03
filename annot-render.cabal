@@ -1,0 +1,56 @@
+name:                annot-render
+version:             0.1.0.0
+homepage:            https://github.com/truls/annot-render#readme
+license:             GPL3
+license-file:        LICENSE
+author:              Truls Asheim
+maintainer:          truls@asheim.dk
+copyright:           Truls Asheim 2017
+category:            Web
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Config
+                     , ParseGroup
+                     , Renderer
+                     , Text.Diff.Parse
+                     , Text.Diff.Parse.Types
+  other-modules:       LatexSnippets
+                     , Text.Diff.Parse.Internal
+  ghc-options:         -Wall
+  build-depends:       base >= 4.9.1.0
+                     , raw-strings-qq >= 1.1
+                     , text >= 1.2.2.2
+                     , parsec >= 3.1.11
+                     , filepath >= 1.4.1.1
+                     , yaml >= 0.8.23.3
+                     , bytestring >= 0.10.8.1
+  default-language:    Haskell2010
+
+executable annot-render
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N -Wall
+  build-depends:       base >= 4.9.1.0
+                     , annot-render
+                     , parsec >= 3.1.11
+                     , optparse-applicative >= 0.13.2.0
+                     , filepath >= 1.4.1.1
+                     , bytestring >= 0.10.8.1
+  default-language:    Haskell2010
+
+-- test-suite annot-render-test
+--   type:                exitcode-stdio-1.0
+--   hs-source-dirs:      test
+--   main-is:             Spec.hs
+--   build-depends:       base
+--                      , annot-render
+--   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+--   default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/truls/annot-render
